@@ -17,7 +17,7 @@ endf
 "---------------------------------------------------------------------------------
 
 " Translate with Google translator (with `wget -qO -` or `curl -so -`)
-" Поганый гугл не пускает wget. Надо задавать User-Agent.
+" Google doesn't allow wget. Need to set User-Agent.
 
 command! -nargs=1 Translate :call Translate(<args>)
 

@@ -16,7 +16,7 @@ if has("win32") || has("win16") || has("win64") || has("win95") || has("win32uni
       set termencoding=cp866
    endif
 
-   " Чтобы работало контекстное меню.
+   " Need for the pop-up menu working.
    "set mousemodel=popup
 
    " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
@@ -114,10 +114,10 @@ if has("win32") || has("win16") || has("win64") || has("win95") || has("win32uni
    endif
 
    if has("gui_running")
-      " Отображение кириллицы во внутренних сообщениях программы.
+      " Correct cyrillic visualisation into the Vim's internal messages.
       lan mes ru_RU.UTF-8
 
-      " Отображение кириллицы в меню
+      " Cyrillic in the menu.
       source $VIMRUNTIME/delmenu.vim
       set langmenu=ru_RU.UTF-8
       source $VIMRUNTIME/menu.vim

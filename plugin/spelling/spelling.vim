@@ -3,7 +3,7 @@
 "
 
 "
-" Проверка орфографии (с 'ё')
+" Russian (with `yo`) and English combined spell checking.
 "
 
 if has('spell')
@@ -15,7 +15,7 @@ if has('spell')
    " Mark bad spelled words with red.
    highlight SpellErrors gui=underline ctermfg=Red guifg=Red
 
-   " Автоматическая загрузка словарей.
+   " Automatic dictionaries loading.
 "   let loaded_spellfile_plugin = 1
    "au SpellFileMissing * call Download_spell_file(expand('<amatch>'))
 
