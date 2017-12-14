@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim binary detection file
-"------------------------------------------------------------------------------
+"
+"  Vim binary detection file.
+"
 
 
 autocmd BufReadPre  *.bin,*.exe,*.com,*.dll setfiletype binary

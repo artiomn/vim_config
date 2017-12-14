@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim Unix manual detection file
-"------------------------------------------------------------------------------
+"
+"  Vim Unix manual detection file.
+"
 
 
 autocmd BufNewFile,BufRead /usr/share/man/* setfiletype man

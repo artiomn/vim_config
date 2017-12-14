@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim HTML detection file
-"------------------------------------------------------------------------------
+"
+"  Vim HTML detection file
+"
 
 
 autocmd BufNewFile,BufRead *.hta setfiletype html

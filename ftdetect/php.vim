@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim PHP detection file
-"------------------------------------------------------------------------------
+"
+" Vim PHP detection file.
+"
 
 
 autocmd BufNewFile,BufRead *.thtml,*.phps setfiletype php

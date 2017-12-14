@@ -1,0 +1,4 @@
+"
+" Vim Java detection file.
+"
+

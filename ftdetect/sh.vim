@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim Sh (Bash) detection file
-"------------------------------------------------------------------------------
+"
+" Vim Sh (Bash) detection file.
+"
 
 
 autocmd BufNewFile,BufRead .functions  setfiletype sh

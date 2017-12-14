@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim Yacc detection file
-"------------------------------------------------------------------------------
+"
+"  Vim Yacc detection file.
+"
 
 
 autocmd BufNewFile,BufRead *.gperf setfiletype yacc

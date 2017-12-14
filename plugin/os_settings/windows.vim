@@ -4,15 +4,18 @@
 
 " Artiom N.
 
-if has("win32") || has("win16") || has("win64")
+if has("win32") || has("win16") || has("win64") || has("win95") || has("win32unix")
    " Doesn't need to include.
    " source $VIMRUNTIME/mswin.vim
-   " Устанавливаю поведение, как в Linux Vim.
+
+   " Behaviour, like in Linux.
+
    behave xterm " mswin
    language ctype Russian_Russia.1251
    if $SHELL != ''
       set termencoding=cp866
    endif
+
    " Чтобы работало контекстное меню.
    "set mousemodel=popup
 
@@ -72,15 +75,15 @@ if has("win32") || has("win16") || has("win64")
    " nnoremap	<M-S-Insert>	:if tabedit <C-R>*<CR>
 
    if executable('NirCmd.exe')
-   """ Jump to regkey in the RegEdit via NirCmd
-   "map	<silent>gy	:silent!!start NirCmd.exe regedit <cfile>:s?^\[\|]$??:s?^-??<CR>
+       """ Jump to regkey in the RegEdit via NirCmd
+       "map	<silent>gy	:silent!!start NirCmd.exe regedit <cfile>:s?^\[\|]$??:s?^-??<CR>
 
-   """ Make link to the current file on the desktop
-   map	<silent><M-F6>	:silent!!start NirCmd.exe shortcut "%:p" "~$folder.desktop$" "%:p:t:r"<CR>
-   """ Make link to the current session on the desktop
-   map	<silent><S-F6>	:if strlen(v:this_session)
-      \ <BAR> exe ':silent!!start NirCmd.exe shortcut "'.v:this_session'" "~$folder.desktop$\Projects" '.fnamemodify(v:this_session,':p:h:t:r')
-      \ <BAR> else <BAR> echoerr "No session!!" <BAR> endif<CR>
+       """ Make link to the current file on the desktop
+       map	<silent><M-F6>	:silent!!start NirCmd.exe shortcut "%:p" "~$folder.desktop$" "%:p:t:r"<CR>
+       """ Make link to the current session on the desktop
+       map	<silent><S-F6>	:if strlen(v:this_session)
+          \ <BAR> exe ':silent!!start NirCmd.exe shortcut "'.v:this_session'" "~$folder.desktop$\Projects" '.fnamemodify(v:this_session,':p:h:t:r')
+          \ <BAR> else <BAR> echoerr "No session!!" <BAR> endif<CR>
 
    endif
 
@@ -107,7 +110,7 @@ if has("win32") || has("win16") || has("win64")
       " fallback into cp1252 instead of eg. iso-8859-15.
       " Newer Windows files might contain utf-8 or utf-16 LE so we might
       " want to try them first.
-      set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+      set fileencodings=ucs-bom,utf-8,utf-16le,cp1251,cp1252,iso-8859-15
    endif
 
    if has("gui_running")

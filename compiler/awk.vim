@@ -6,6 +6,7 @@
 if exists("current_compiler")
     finish
 endif
+
 let current_compiler = "awk"
 
 if exists(":CompilerSet") != 2		" older Vim always used :setlocal

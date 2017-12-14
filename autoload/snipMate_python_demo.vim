@@ -1,1 +1,0 @@
-/usr/share/vim/addons/autoload/snipMate_python_demo.vim

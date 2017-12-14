@@ -1,6 +1,7 @@
-"------------------------------------------------------------------------------
-"  Description: Vim Action Script detection file
-"------------------------------------------------------------------------------
+"
+"  Vim Action Script detection file
+"
+
 
 " in filetype it's "Atlas", but "actionscript" is more actually.
 autocmd BufNewFile,BufRead *.as setfiletype actionscript

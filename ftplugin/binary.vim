@@ -1,3 +1,6 @@
+"
+" Binary formats.
+"
 
 augroup Binary
    au!

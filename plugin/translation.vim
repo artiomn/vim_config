@@ -19,10 +19,11 @@ endf
 " Translate with Google translator (with `wget -qO -` or `curl -so -`)
 " Поганый гугл не пускает wget. Надо задавать User-Agent.
 
+command! -nargs=1 Translate :call Translate(<args>)
+
 map! <silent><Leader><F1>	:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=en&tl=ru&text='.expand('<cword>').'"')<cr>
 vmap <silent><Leader><F1>	y:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=en&tl=ru&text='.substitute(@@,'\_s\+','+','g').'"')<cr>
 
 map! <silent><Leader><C-F1>:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=ru&tl=en&text='.expand('<cword>').'"')<cr>
 vmap <silent><Leader><C-F1>y:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=ru&tl=en&text='.substitute(@@,'\_s\+','+','g').'"')<cr>
-
 

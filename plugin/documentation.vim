@@ -2,6 +2,7 @@
 " Documentation support.
 "
 
+
 " Artiom N.
 
 fun! LocalDoc()
@@ -30,7 +31,8 @@ fun! LocalDoc()
    silent! exec l:cmd . expand("<cword>")
    redraw!
 endf
-"---------------------------------------------------------------------------------
+
+
 fun! OnlineDoc()
 " Modified by Artiom N. for more filetypes.
 " Вск Янв 20 09:56:21 MSK 2013.

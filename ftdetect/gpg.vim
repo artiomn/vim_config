@@ -1,7 +1,6 @@
-
-"------------------------------------------------------------------------------
-"  Description: Vim GPG data detection file
-"------------------------------------------------------------------------------
+"
+"  Vim GPG data detection file
+"
 
 
 autocmd BufReadPre *.gpg setfiletype gpg

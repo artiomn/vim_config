@@ -1,6 +1,6 @@
-"------------------------------------------------------------------------------
-"  Description: Vim Nginx config detection file
-"------------------------------------------------------------------------------
+"
+"  Vim Nginx config detection file.
+"
 
 autocmd BufNewFile,BufRead /etc/nginx/*.conf setfiletype nginx
 finish

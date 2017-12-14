@@ -4,9 +4,22 @@
 
 " Artiom N.(cl)2016
 
+
+fun! SwapLine(dir)
+   let l:pos = getpos(".")
+   silent exec "move " . a:dir
+   call setpos(".", l:pos)
+endf
+
+
 " Kill line
 noremap <C-k> "_dd
 nmap <C-k> "_dd
+
+" Line swapping.
+nmap <silent> gl :call SwapLine("+1")<CR>
+nmap <silent> gL :call SwapLine("-2")<CR>
+
 " Delete the word right
 map	<C-Del>	dw
 " Delete the rest of the line

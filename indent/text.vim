@@ -1,7 +1,7 @@
-"------------------------------------------------------------------------------
+"
 "  Description: Vim text indent file
 "  Help Page: ft-vim-indent
-"------------------------------------------------------------------------------
+"
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent") || version < 700

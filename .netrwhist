@@ -1,9 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/artiom/workspace/LINUX_KB2_4_DVLP/cisco_rvpn/_result/openssl_engines_gost/ivy_report'
-let g:netrw_dirhist_2='/home/artiom/workspace/KB_2000/LINUX_KB2_4_DVLP/cisco_rvpn/install/install_addons/hwid'
-let g:netrw_dirhist_3='/home/artiom/workspaces/KB2000/LINUX_KB2_4_DVLP/KB2_DEVELOP/main/_result'
-let g:netrw_dirhist_4='/home/artiom/workspaces/KB5000/LINUX_KB2_4_DVLP/cisco_rvpn/install/install_addons/hwid'
-let g:netrw_dirhist_5='/home/artiom/workspaces/KB5000/LINUX_KB2_4_DVLP/cisco_rvpn/install/install_addons/hwid/sbin'
-let g:netrw_dirhist_6='/home/artiom/workspaces/KB5000/LINUX_KB2_4_DVLP/cisco_rvpn/install/install_addons/hwid'
-let g:netrw_dirhist_7='/home/artiom/workspaces/KB5000/LINUX_KB2_4_DVLP/cisco_rvpn/install/install_addons/hwid/sbin'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/artiom/.vim/plugin'
+let g:netrw_dirhist_2='/home/artiom/.vim/ftplugin'
+let g:netrw_dirhist_3='/home/artiom/workspaces/KB2000/LINUX_KB2_4_DVLP/KB2_DEVELOP/main'

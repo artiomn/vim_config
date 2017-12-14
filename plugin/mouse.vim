@@ -4,7 +4,6 @@
 
 " Artiom N.
 
-"---------------------------------------------------------------------------
 fun! Mousec(arg)
    if (a:arg == "auto" && &paste) || a:arg == "off"
       set nopaste

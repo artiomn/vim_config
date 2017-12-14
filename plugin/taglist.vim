@@ -4675,3 +4675,7 @@ endfunction
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
+map <F11> :TlistToggle<cr>
+vmap <F11> <esc>:TlistToggle<cr>
+imap <F11> <esc>:TlistToggle<cr>
+
