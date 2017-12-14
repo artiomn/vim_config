@@ -6,6 +6,7 @@
 let $darkxterm='yes'
 colorscheme molokai
 
+" railscasts
 " delek
 " torte
 " default
@@ -13,7 +14,6 @@ colorscheme molokai
 " Colors for &number.
 hi LineNr NONE
 hi LineNr term=bold ctermfg=green gui=bold guifg=darkblue guibg=lightgrey
-
 " Check if we're using a dark background - this should be set then.
 if $darkxterm != ''
    set background=dark
