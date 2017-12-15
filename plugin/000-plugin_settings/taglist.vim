@@ -3,6 +3,7 @@
 "
 
 
+let g:Tlist_Show_One_File           = 1
 let Tlist_GainFocus_On_ToggleOpen   = 1
 let Tlist_Exit_OnlyWindow           = 1
 let Tlist_File_Fold_Auto_Close      = 0

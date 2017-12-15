@@ -13,13 +13,6 @@
 " Utilities.
 "
 
-"
-fun! StripTrailingSpaces()
-   let currPos=Mark()
-   exec 'v:^--\s*$:s:\s\+$::e'
-   exec currPos
-endf
-
 
 " set diffexpr=MyDiff()
 fun! MyDiff()
@@ -48,13 +41,13 @@ fun! MyDiff()
 endf
 
 
-" AutoComplete.
-fun! Mosh_Tab_Or_Complete()
-   if (col('.') > 1 && strpart(getline('.'), col('.')-2, 3) =~ '^\w')
-      return "\<C-N>"
-   else
-      return "\<Tab>"
-   endif
-endf
+function! StripTrailingWhitespace() "{{{
+   call Preserve("%s/\\s\\+$//e")
+endf "}}}
 
+fun! StripTrailingSpaces()
+   let currPos=Mark()
+   exec 'v:^--\s*$:s:\s\+$::e'
+   exec currPos
+endf
 

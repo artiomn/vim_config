@@ -19,7 +19,11 @@ function! YakuakeOpen()
 endfunction
 
 
-function! YakuakeOpen()
+function! YakuakeUpdate()
+endfunction
+
+
+function! YakuakeRestore()
 endfunction
 
 
@@ -32,8 +36,8 @@ if has("unix")
    augroup yakuake
          au!
          au VimEnter * let session_id = YakuakeGetActiveTabId() | call YakuakeSetTabTitle(session_id, "sssssssss")
-"         au BufEnter,BufRead,BufNewFile * call YakuakeUpdate()
-"         au VimLeave * call YakuakeRestore()
+         au BufEnter,BufRead,BufNewFile * call YakuakeUpdate()
+         au VimLeave * call YakuakeRestore()
       augroup END
    endif
 endif

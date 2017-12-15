@@ -13,3 +13,4 @@ augroup Binary
    au BufWritePost   *.bin,*.exe,*.com,*.dll if &bin | %!xxd
    au BufWritePost   *.bin,*.exe,*.com,*.dll set nomod | endif
 augroup END
+

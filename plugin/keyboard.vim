@@ -1,10 +1,94 @@
 "
+" Default keyboard settings.
+"
+
+" Artiom N.
+
+"
+" Keyboard.
+"
+
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
+
+" Allow usage of cursor keys within insert mode.
+set esckeys
+
+" Use shifted cursor keys to start/stop selection
+"set keymodel=startsel,stopsel
+
+" No Select-mode: no replace selection with typing
+"set selectmode=
+
+" Keymaps switch by <C-^>
+" set keymap=russian-jcukenwin
+" Default keymap is a latin.
+
+" Input method support.
+set iminsert=0
+
+" Allow for cursor beyond last character.
+set virtualedit=onemore
+
+"
 " Section: Mappings. {{{1
 "
 
+
+" Functional keys mapping{{{2
+
+" F2 - wrapping toggle.
+nmap <F2> :set wrap!<CR>
+vmap <F2> <C-O>:set wrap!<CR>
+imap <F2> <C-O>:set wrap!<CR>
+
+" F3 - toggle line numbers.
+nmap <silent> <F3> :set number!<CR>
+vmap <silent> <F3> <C-O>:set number!<CR>
+imap <silent> <F3> <C-O>:set number!<CR>
+
+" F4 - wrapping toggle.
+nmap <silent><F4> <ESC>:set wrap!<CR>
+vmap <silent><F4> <ESC>:set wrap!<CR>
+imap <silent><F4> <ESC>:set wrap!<CR>
+
+" F5 - call translator.
+nmap <F5> :Translate expand("<cword>")<CR>
+vmap <F5> <ESC>:Translate expand("<cword>")<CR>
+imap <F5> <ESC>:Translate expand("<cword>")<CR>
+
+" VimTip44: The last command-line change (those invoked with ":",
+" e.g. :s/foo/bar ) can be repeated with the "@:" command.
+"map	<F5>	@:
+
+" F6 - prev buffer
+nmap <F6> :bp<cr>
+vmap <F6> <esc>:bp<cr>i
+imap <F6> <esc>:bp<cr>i
+
+" F7 - next buffer
+map <F7> :bn<cr>
+vmap <F7> <esc>:bn<cr>i
+imap <F7> <esc>:bn<cr>i
 map <F7> :Recode<CR>
+
+"map <F8> :read !date<CR>
+"map! <F8> <ESC>:read !date<CR>
+
+" F8 - Marks
+"map <F8> :marks<cr>
+"vmap <F8> <esc>:marks<cr>
+"imap <F8> <esc>:marks<cr>
+
+" F9 to make.
+map <F9> :make<cr>
+vmap <F9> <esc>:make<cr>i
+imap <F9> <esc>:make<cr>i
+
+
 map <F10> :emenu Encoding.<TAB>
 map <F12> :Mouse auto<CR>
+" }}}
 
 " CursorKeys: use screen lines.
 " editing mapping (make cursor keys work like in windows).
@@ -26,6 +110,11 @@ vmap <BS> x
 cmap <a-bs> <c-w>
 imap <a-bs> <c-w>
 
+" Ctrl + F3 - list all errors.
+nmap <C-F3> :cclose<cr>
+vmap <C-F3> <esc>:cclose<cr>
+imap <C-F3> <esc>:cclose<cr>
+
 
 " have Y behave analogously to D rather than to dd 
 nmap Y y$
@@ -34,63 +123,6 @@ nmap Y y$
 nmap	<C-Insert>	"+yy
 imap	<C-Insert>	<C-O>"+yy
 cmap	<C-Insert>	<C-Y>
-
-"
-" Functional keys mapping.
-"
-
-" map F2 to quick save.
-nmap <F2> :w<cr>
-vmap <F2> <esc>:w<cr>i
-imap <F2> <esc>:w<cr>i
-
-" F3 - toggle line numbers.
-nmap <silent> <F3> :set number!<CR>
-vmap <silent> <F3> <C-O>:set number!<CR>
-imap <silent> <F3> <C-O>:set number!<CR>
-
-" Ctrl + F3 - list all errors.
-nmap <C-F3> :cclose<cr>
-vmap <C-F3> <esc>:cclose<cr>
-imap <C-F3> <esc>:cclose<cr>
-
-" F4 - wrapping toggle.
-nmap <silent><F4> <ESC>:set wrap!<CR>
-vmap <silent><F4> <ESC>:set wrap!<CR>
-imap <silent><F4> <ESC>:set wrap!<CR>
-
-" F5 - call translator.
-nmap <F5> :Translate expand("<cword>")<CR>
-vmap <F5> <ESC>:Translate expand("<cword>")<CR>
-imap <F5> <ESC>:Translate expand("<cword>")<CR>
-
-" F6 - prev buffer
-nmap <F6> :bp<cr>
-vmap <F6> <esc>:bp<cr>i
-imap <F6> <esc>:bp<cr>i
-
-" F7 - next buffer
-map <F7> :bn<cr>
-vmap <F7> <esc>:bn<cr>i
-imap <F7> <esc>:bn<cr>i
-
-"map <F8> :read !date<CR>
-"map! <F8> <ESC>:read !date<CR>
-
-" F8 - Marks
-"map <F8> :marks<cr>
-"vmap <F8> <esc>:marks<cr>
-"imap <F8> <esc>:marks<cr>
-
-" F9 to make.
-map <F9> :make<cr>
-vmap <F9> <esc>:make<cr>i
-imap <F9> <esc>:make<cr>i
-
-" F10 - wrapping toggle.
-nmap <F2> :set wrap!<CR>
-vmap <F2> <C-O>:set wrap!<CR>
-imap <F2> <C-O>:set wrap!<CR>
 
 ":inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
@@ -152,16 +184,6 @@ nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 nmap ,X :silent execute "!chmod a+x %"<CR>
 nmap ,x :silent execute "!chmod a-x %"<CR>
 
-" \hp ("HTML previous") copies the previous (non-closing) HTML tag in full,
-" including attributes; repeating this straight away removes that tag and
-" copies the one before it [function at end of file]:
-nnoremap \hp :call RepeatTag(0)<CR>
-" imap <F9> <Space><BS><Esc>\hpa
-" \hn ("HTML next") does the same thing, but copies the next tag; so \hp and
-" \hn can be used to cycle backwards and forwards through the tags in the file
-" (like <Ctrl>+P and <Ctrl>+N do for insert mode completion):
-nnoremap \hn :call RepeatTag(1)<CR>
-" imap <F10> <Space><BS><Esc>\hna
 
 " Select Current Word:
 "nmap	<C-C>		ciw
@@ -285,10 +307,6 @@ inoremap	<M-p>	<C-R>"
 " Correct syntax synchronization.
 "map	<leader><leader>r	:syntax sync fromstart<cr>
 
-
-" VimTip44: The last command-line change (those invoked with ":",
-" e.g. :s/foo/bar ) can be repeated with the "@:" command.
-"map	<F5>	@:
 
 " VimTip637: execute accidently inserted commands
 " If you are in insert mode and typed an command for normal mode, you can
