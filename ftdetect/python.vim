@@ -1,5 +1,0 @@
-"
-" Vim Python detector.
-"
-
-

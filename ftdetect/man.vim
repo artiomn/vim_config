@@ -3,6 +3,7 @@
 "
 
 
+" Additional man pages detector for Unix-like systems.
 autocmd BufNewFile,BufRead /usr/share/man/* setfiletype man
 finish
 

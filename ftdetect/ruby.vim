@@ -1,5 +1,0 @@
-"
-" Vim Ruby detection file.
-"
-
-

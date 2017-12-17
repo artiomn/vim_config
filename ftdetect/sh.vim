@@ -3,6 +3,7 @@
 "
 
 
+" Additional shell-scripts detector.
 autocmd BufNewFile,BufRead .functions  setfiletype sh
 autocmd BufNewFile,BufRead .aliases    setfiletype sh
 finish

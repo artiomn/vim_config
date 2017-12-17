@@ -3,6 +3,7 @@
 "
 
 
+" Additional PHP files detector.
 autocmd BufNewFile,BufRead *.thtml,*.phps setfiletype php
 finish
 
