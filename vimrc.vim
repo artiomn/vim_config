@@ -136,9 +136,6 @@ delcommand Vtabedit
 delcommand Vpedit
 delcommand Vread
 
-" Unmapping python mode C-I, which used in Vim as a navigation key sequence.
-unmap C-I
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
    finish
@@ -393,3 +390,4 @@ map <Leader>tr :call MoveTabRight()<CR>
 syntax on
 
 let g:did_ftplugin=1
+

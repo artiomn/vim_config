@@ -2,6 +2,7 @@
 " VimAirline settings.
 "
 
+" https://github.com/vim-airline/vim-airline/wiki/Screenshots
 
 let g:airline_theme = "luna"
 let g:airline_extensions = []

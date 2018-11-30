@@ -1,6 +1,6 @@
 if s:is_windows && !s:is_cygwin
-" ensure correct shell in gvim
-set shell=c:\windows\system32\cmd.exe
+    " ensure correct shell in gvim
+    set shell=c:\windows\system32\cmd.exe
 endif
 
 if $SHELL =~ '/fish$'
