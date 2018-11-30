@@ -1,0 +1,9 @@
+[submodule "bundle/vim_config"]
+	path = bundle/vim_config
+	url = https://github.com/artiomn/vim_config.git
+[submodule "bundle/matchit.zip"]
+	path = bundle/matchit.zip
+	url = https://github.com/vim-scripts/matchit.zip
+[submodule "bundle/Ada-Bundle"]
+	path = bundle/Ada-Bundle
+	url = https://github.com/vim-scripts/Ada-Bundle
