@@ -79,8 +79,8 @@
 [submodule "bundle/vim-coloresque"]
 	path = bundle/vim-coloresque
 	url = https://github.com/gorodinskiy/vim-coloresque
-[submodule "bundle/vimcommander.git"]
-	path = bundle/vimcommander.git
+[submodule "bundle/vimcommander"]
+	path = bundle/vimcommander
 	url = https://github.com/lpenz/vimcommander.git
 [submodule "bundle/vim-css3-syntax"]
 	path = bundle/vim-css3-syntax
