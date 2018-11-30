@@ -1,9 +1,120 @@
-[submodule "bundle/vim_config"]
-	path = bundle/vim_config
-	url = https://github.com/artiomn/vim_config.git
+[submodule "bundle/awk-support"]
+	path = bundle/awk-support
+	url = https://github.com/WolfgangMehner/awk-support
+[submodule "bundle/bash-support"]
+	path = bundle/bash-support
+	url = https://github.com/WolfgangMehner/bash-support
+[submodule "bundle/c-support"]
+	path = bundle/c-support
+	url = https://github.com/WolfgangMehner/c-support
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "bundle/delimitMate"]
+	path = bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate
+[submodule "bundle/denite.nvim"]
+	path = bundle/denite.nvim
+	url = https://github.com/Shougo/denite.nvim
+[submodule "bundle/emmet-vim"]
+	path = bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+[submodule "bundle/errormarker.vim"]
+	path = bundle/errormarker.vim
+	url = https://github.com/mh21/errormarker.vim
+[submodule "bundle/gundo.vim"]
+	path = bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim
+[submodule "bundle/latex-support"]
+	path = bundle/latex-support
+	url = https://github.com/WolfgangMehner/latex-support
+[submodule "bundle/lua-support"]
+	path = bundle/lua-support
+	url = https://github.com/WolfgangMehner/lua-support
 [submodule "bundle/matchit.zip"]
 	path = bundle/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip
+[submodule "bundle/matlab-support"]
+	path = bundle/matlab-support
+	url = https://github.com/WolfgangMehner/matlab-support
+[submodule "bundle/neosnippet.vim"]
+	path = bundle/neosnippet.vim
+	url = https://github.com/Shougo/neosnippet.vim
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/perl-support"]
+	path = bundle/perl-support
+	url = https://github.com/WolfgangMehner/perl-support
+[submodule "bundle/PIV"]
+	path = bundle/PIV
+	url = https://github.com/spf13/PIV
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = https://github.com/python-mode/python-mode
+[submodule "bundle/quickfixsigns_vim"]
+	path = bundle/quickfixsigns_vim
+	url = https://github.com/tomtom/quickfixsigns_vim
+[submodule "bundle/rainbow"]
+	path = bundle/rainbow
+	url = https://github.com/luochen1990/rainbow
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = https://github.com/mbbill/undotree
 [submodule "bundle/Ada-Bundle"]
 	path = bundle/Ada-Bundle
 	url = https://github.com/vim-scripts/Ada-Bundle
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "bundle/vim-coloresque"]
+	path = bundle/vim-coloresque
+	url = https://github.com/gorodinskiy/vim-coloresque
+[submodule "bundle/vimcommander.git"]
+	path = bundle/vimcommander.git
+	url = https://github.com/lpenz/vimcommander.git
+[submodule "bundle/vim-css3-syntax"]
+	path = bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature
+[submodule "bundle/vim-signify"]
+	path = bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify
+[submodule "bundle/vim-support"]
+	path = bundle/vim-support
+	url = https://github.com/WolfgangMehner/vim-support
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "bundle/vim-virtualenv"]
+	path = bundle/vim-virtualenv
+	url = https://github.com/jmcantrell/vim-virtualenv
+[submodule "bundle/vim-wordy"]
+	path = bundle/vim-wordy
+	url = https://github.com/reedes/vim-wordy
+[submodule "bundle/webapi-vim"]
+	path = bundle/webapi-vim
+	url = https://github.com/mattn/webapi-vim
