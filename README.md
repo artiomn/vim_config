@@ -8,7 +8,7 @@ Requirements
 ------------
 
 - Git
-- `Exuberant ctags`_ ::
+- `Exuberant ctags`
 
     sudo apt-get install exuberant-ctags
 
