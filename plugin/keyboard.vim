@@ -291,7 +291,6 @@ endif
 vmap	<Tab>	>gv
 vmap	<S-Tab>	<LT>gv
 
-nmap	<Tab>	>>
 nmap	<S-Tab>	<LT><LT>
 
 inoremap <S-Tab>	<C-D>
