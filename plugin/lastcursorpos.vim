@@ -31,4 +31,3 @@ function! Preserve(command) "{{{
    let @/=_s
    call cursor(l, c)
  endf "}}}
-

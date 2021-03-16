@@ -45,4 +45,3 @@ catch
 endtry
 
 "set dictionary=~/.vim/wordlists/c.list,~/.vim/wordlists/php.list
-

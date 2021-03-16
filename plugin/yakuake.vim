@@ -2,10 +2,19 @@
 " Yakuake console support.
 "
 
-finish
+let g:yakuake_plugin_enabled = get(g:, 'yakuake_plugin_enabled', 0)
+
+if !executable("yakuake") || !executable("qdbus") || !g:yakuake_plugin_enabled
+    finish
+endif
 
 function! YakuakeGetActiveTabId()
-	return system("qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeTerminalId")
+    return system("qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeTerminalId")
+endfunction
+
+
+function! YakuakeGetTabTitle(id)
+    return system("qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.tabTitle " . a:id)
 endfunction
 
 
@@ -14,16 +23,23 @@ function! YakuakeSetTabTitle(id, title)
 endfunction
 
 
-function! YakuakeOpen()
+function! YakuakeShow()
+    call system("qdbus org.kde.yakuake /yakuake/window org.kde.yakuake.show")
+endfunction
 
+
+function! YakuakeHide()
+    call system("qdbus org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.hide")
+endfunction
+
+
+function! YakuakeToggle()
+    call system("qdbus org.kde.yakuake /yakuake/window org.kde.yakuake.toggleWindowState")
 endfunction
 
 
 function! YakuakeUpdate()
-endfunction
-
-
-function! YakuakeRestore()
+    call system("qdbus org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.update")
 endfunction
 
 
@@ -31,13 +47,14 @@ if has("unix")
 
    if exists(":command")
       command! -n=0 -bar Yakuake :call YakuakeOpen()
-   fi
+   endif
 
    augroup yakuake
          au!
-         au VimEnter * let session_id = YakuakeGetActiveTabId() | call YakuakeSetTabTitle(session_id, "sssssssss")
-         au BufEnter,BufRead,BufNewFile * call YakuakeUpdate()
-         au VimLeave * call YakuakeRestore()
-      augroup END
-   endif
+         au VimEnter * let g:old_tab_title = YakuakeGetTabTitle(YakuakeGetActiveTabId())
+         au BufEnter,BufRead,BufNewFile *
+           \ call YakuakeSetTabTitle(YakuakeGetActiveTabId(), expand('%:t')) |
+           \ call YakuakeUpdate()
+         au VimLeave * call YakuakeSetTabTitle(YakuakeGetActiveTabId(), g:old_tab_title)
+   augroup END
 endif

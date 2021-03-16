@@ -38,4 +38,3 @@ command! Date call append('.', CurDateTimeLine())
 nmap <silent><F8> :Date<CR>
 vmap <silent><F8> <ESC>:Date<CR>
 imap <silent><F8> <ESC>:Date<CR>
-

@@ -38,4 +38,3 @@ endf
 " Encoding: Change file encoding.
 command! Recode call Auto_recode()
 command! -nargs=1 -bar Encoding if &fenc!=<q-args> | visual ++enc=<args> | endif
-

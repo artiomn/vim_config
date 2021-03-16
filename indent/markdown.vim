@@ -16,7 +16,7 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal autoindent
-setlocal textwidth=79
+setlocal textwidth=120
 setlocal formatoptions+=tcan2wro
 setlocal comments=n:>
 

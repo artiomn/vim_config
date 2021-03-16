@@ -5,7 +5,7 @@
 
 autocmd BufNewFile,BufRead *.hta setfiletype html
 
-" All my .tpl files ARE html.
+" All my .tpl files ARE html (What's the "smarty templates"?).
 autocmd BufNewFile,BufRead *.tpl setfiletype html
 finish
 

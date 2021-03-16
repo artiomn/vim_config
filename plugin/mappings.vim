@@ -30,4 +30,3 @@ map Ё ~
 "set iminsert=0		" latin input  as default
 "set imsearch=0		" latin search as default
 " so <sfile>:p:h/keymap/russian-jcuken-win.vim
-

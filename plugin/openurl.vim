@@ -12,4 +12,3 @@ fun! OpenURL(url)
 endf
 
 command! -bar -nargs=1 Openurl call OpenURL("<args>")
-

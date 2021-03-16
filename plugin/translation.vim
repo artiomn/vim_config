@@ -1,6 +1,3 @@
-"fun! VarExists(var, val)
-"if exists(a:var) | return a:val | else | return '' | endif
-"endf
 
 fun! Translate(word)
    " !socrat <cWORD>
@@ -26,4 +23,3 @@ vmap <silent><Leader><F1>	y:echo system('wget --user-agent="Mozilla/5.0" -qO - "
 
 map! <silent><Leader><C-F1>:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=ru&tl=en&text='.expand('<cword>').'"')<cr>
 vmap <silent><Leader><C-F1>y:echo system('wget --user-agent="Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=vim&sl=ru&tl=en&text='.substitute(@@,'\_s\+','+','g').'"')<cr>
-

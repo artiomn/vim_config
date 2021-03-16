@@ -10,4 +10,3 @@ endif
 
 " CD: to the dir of the current buffer for current window.
 command! Cd lcd %:p:h 
-

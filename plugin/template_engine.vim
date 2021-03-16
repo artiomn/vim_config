@@ -21,4 +21,3 @@ fun! Template_Apply(ft)
    silent! execute ":%s/@AUTHOREMAIL@/\\=g:C_Email/"
    silent! execute ":%s/@MODELINE@/\\=\"ft=\" . a:ft . \" \" . g:C_Modeline"
 endf
-

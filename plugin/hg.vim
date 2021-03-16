@@ -9,5 +9,3 @@ if filereadable( "/usr/share/doc/mercurial/examples/hg-menu.vim" )
    source /usr/share/doc/mercurial/examples/hg-menu.vim
    let mapleader = "\\"
 endif
-
-

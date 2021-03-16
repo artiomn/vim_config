@@ -38,4 +38,3 @@ set mousemodel=popup
 set mousehide
 
 "set ttymouse=xterm2
-

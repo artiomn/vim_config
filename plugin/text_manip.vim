@@ -53,4 +53,3 @@ map <M-BS> db
 map! <M-BS> db
 imap <M-BS> <ESC>ldbi
 "imap <M-BS> <ESC>dawi
-

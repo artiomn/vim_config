@@ -28,5 +28,3 @@ set showmatch
 
 " How many tenths of a second to blink matching brackets for.
 set mat=5
-
-

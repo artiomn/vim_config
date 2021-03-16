@@ -136,6 +136,8 @@ call plug#begin("~/.vim/bundle")
     \    "https://github.com/mattn/webapi-vim",
     \    "https://github.com/vim-scripts/LargeFile",
     \    "https://github.com/ryanoasis/vim-devicons",
+    \    "https://github.com/jacquesbh/vim-showmarks",
+    \    "https://github.com/vim-scripts/taglist.vim"
     \ ])
 
     Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }

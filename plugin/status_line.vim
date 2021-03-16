@@ -25,5 +25,3 @@ set laststatus=2
 "               | | +-- readonly flag in square brackets
 "               | +-- modified flag in square brackets
 "               +-- full path to file in the buffer
-
-

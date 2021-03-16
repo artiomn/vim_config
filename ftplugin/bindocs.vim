@@ -1,8 +1,9 @@
+"
+" Enable reading of doc, pdf, ps and odt in vim based on extension.
+"
 
 augroup BinDocs
    au!
-   " Просмотр нетекстовых файлов в Vim.
-   " enable reading of doc, pdf, ps and odt in vim based on extension.
    au BufReadPre  *.pdf set ro
    au BufReadPost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw79
    "au BufReadPre  *.ps  set ro

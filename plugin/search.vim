@@ -18,4 +18,3 @@ set grepprg=internal
 
 " Assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
-

@@ -35,4 +35,3 @@ if has('gui_running')
    vmap <silent> <C-F2> <C-O>:set ballooneval!<CR>
 
 endif
-

@@ -15,4 +15,3 @@ endf
 
 inoremap <silent><HOME> <C-O>:call SmartHome()<CR>
 nnoremap <silent><HOME> :call SmartHome()<CR>
-

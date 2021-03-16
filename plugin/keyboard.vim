@@ -312,4 +312,3 @@ inoremap	<M-p>	<C-R>"
 " use it.  This mapping switches to normal mode, undo'es the last insertion
 " and takes it as a command.
 inoremap	<C-ESC>	<ESC>u@.
-

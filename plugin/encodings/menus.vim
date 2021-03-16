@@ -18,5 +18,3 @@ menu Encoding.F_CP1251   :set fileencoding=cp1251<CR>
 menu Encoding.F_CP866    :set fileencoding=cp866<CR>
 menu Encoding.F_UTF-8    :set fileencoding=utf-8<CR>
 menu Encoding.F_KOI8-U   :set fileencoding=koi8-u<CR>
-
-
