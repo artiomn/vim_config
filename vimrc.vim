@@ -69,7 +69,8 @@ filetype off
 
 function! s:infect_plugins(plugin_list) abort " {{{1
   for plugin_name in a:plugin_list
-    call pathogen#interpose("bundle/" . plugin_name)
+    " call pathogen#interpose("bundle/" . plugin_name)
+    call plug#(plugin_name)
   endfor
 endfunction " }}}1
 
@@ -98,43 +99,73 @@ endfunction " }}}1
 " - vim-wordy - wordy is a lightweight tool to assist you in identifying those words and phrases known for their history of misuse, abuse, and overuse, at least according to usage experts.
 " - webapi-vim - An Interface to WEB APIs.
 
-call s:infect_plugins(["ctrlp.vim", "delimitMate", "denite.nvim", "matchit", "neosnippet.vim", "nerdtree", "quickfixsigns_vim", "rainbow", "syntastic", "tagbar", "undotree", "vim-airline-themes", "vim-airline", "vim-coloresque", "vim-fugitive", "vim-gitgutter", "vim-signature", "vim-signify", "vim-surround", "vim-wordy", "webapi-vim"])
+call plug#begin("~/.vim/bundle")
+" Plug "https://github.com/sjl/gundo.vim",
+call s:infect_plugins([
+\    "https://github.com/ctrlpvim/ctrlp.vim",
+\    "https://github.com/Raimondi/delimitMate",
+\    "https://github.com/Shougo/denite.nvim",
+\    "https://github.com/vim-scripts/matchit.zip",
+\    "https://github.com/Shougo/neosnippet.vim",
+\    "https://github.com/scrooloose/nerdtree.git",
+\    "https://github.com/tomtom/quickfixsigns_vim",
+\    "https://github.com/luochen1990/rainbow",
+\    "https://github.com/scrooloose/syntastic.git",
+\    "https://github.com/majutsushi/tagbar",
+\    "https://github.com/mbbill/undotree",
+\    "https://github.com/vim-airline/vim-airline-themes",
+\    "https://github.com/vim-airline/vim-airline",
+\    "https://github.com/gorodinskiy/vim-coloresque",
+\    "https://github.com/tpope/vim-fugitive",
+\    "https://github.com/airblade/vim-gitgutter",
+\    "https://github.com/kshenoy/vim-signature",
+\    "https://github.com/mhinz/vim-signify",
+\    "https://github.com/tpope/vim-surround",
+\    "https://github.com/reedes/vim-wordy",
+\    "https://github.com/mattn/webapi-vim"
+\ ])
 
+Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
+Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
+
+Plug 'https://github.com/WolfgangMehner/c-support', { 'for': 'c'}
 " - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
-call s:infect_plugins(["c-support"])
+" Plug 'https://github.com/mh21/errormarker.vim', {'for': ['c']}
 
-"call s:infect_plugins(["awk-support", "bash-support"])
-
-" - PIV - php support.
 " - emmet - web developers abbreviations expander.
-"call s:infect_plugins(["PIV", "emmet", "vim-css3-syntax", "vim-javascript"])
-"call s:infect_plugins(["latex-support"])
-"call s:infect_plugins(["lua-support"])
-"call s:infect_plugins(["matlab-support"])
-"call s:infect_plugins(["perl-support"])
+Plug 'https://github.com/mattn/emmet-vim', {'for': ['php', 'html']}
+Plug 'https://github.com/hail2u/vim-css3-syntax.git', {'for': ['css', 'html', 'php']}
+Plug 'https://github.com/pangloss/vim-javascript', {'for': ['javascript', 'html']}
+" - PIV - php support.
+Plug 'https://github.com/spf13/PIV', {'for': 'php'}
 
+Plug 'https://github.com/WolfgangMehner/latex-support', {'for': 'latex'}
+
+Plug 'https://github.com/WolfgangMehner/lua-support', {'for': 'lua'}
+
+Plug 'https://github.com/WolfgangMehner/matlab-support', {'for': 'matlab'}
+
+Plug 'https://github.com/WolfgangMehner/perl-support', {'for': 'perl'}
+
+Plug 'https://github.com/python-mode/python-mode', {'for': 'python'}
 " - vim-virtualenv - The virtualenv.vim plugin will modify python's sys.path and the $PATH environment variable so that anything done with :python or :!python will behave like you would expect for the chosen virtualenv.
-"call s:infect_plugins(["python-mode", "vim-virtualenv"])
-"call s:infect_plugins(["vim-ada"])
-"call s:infect_plugins(["vim-markdown"])
-"call s:infect_plugins(["vim-support"])
+Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 
-call pathogen#helptags()
+Plug 'https://github.com/vim-scripts/Ada-Bundle', {'for': 'ada'}
+Plug 'https://github.com/thindil/vim-ada', {'for': 'ada'}
+
+Plug 'https://github.com/plasticboy/vim-markdown', {'for': 'markdown'}
+    "https://github.com/lpenz/vimcommander.git",
+Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
+    "https://github.com/vim-scripts/LargeFile",
+call plug#end()
+
+" call pathogen#helptags()
 
 "filetype plugin indent on
 
 " Verbosity level for testing.
 "set verbose=9
-
-" Remove annoying pathogen commands.
-delcommand Ve
-delcommand Vedit
-delcommand Vopen
-delcommand Vsplit
-delcommand Vvsplit
-delcommand Vtabedit
-delcommand Vpedit
-delcommand Vread
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
