@@ -67,6 +67,17 @@ filetype off
 "call pathogen#helptags()
 "call pathogen#infect()
 
+function! s:is_it_first_run()
+    let l:f_name = "~/.vim/first-run"
+    if !empty(expand(glob(l:f_name)))
+        call delete(expand(l:f_name))
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+
 function! s:infect_plugins(plugin_list) abort " {{{1
   for plugin_name in a:plugin_list
     " call pathogen#interpose("bundle/" . plugin_name)
@@ -122,7 +133,8 @@ call s:infect_plugins([
 \    "https://github.com/mhinz/vim-signify",
 \    "https://github.com/tpope/vim-surround",
 \    "https://github.com/reedes/vim-wordy",
-\    "https://github.com/mattn/webapi-vim"
+\    "https://github.com/mattn/webapi-vim",
+\    "https://github.com/vim-scripts/LargeFile"
 \ ])
 
 Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
@@ -157,7 +169,13 @@ Plug 'https://github.com/thindil/vim-ada', {'for': 'ada'}
 Plug 'https://github.com/plasticboy/vim-markdown', {'for': 'markdown'}
     "https://github.com/lpenz/vimcommander.git",
 Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
-    "https://github.com/vim-scripts/LargeFile",
+
+if s:is_it_first_run()
+    PlugInstall
+endif
+
+silent! call s:install()
+
 call plug#end()
 
 " call pathogen#helptags()
