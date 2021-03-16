@@ -16,7 +16,7 @@
 "  - GUI support.
 "  - Spell checking.
 "  - Autoreloading vimrc after editing.
-"  - Words auto-completing.
+"  - Words auto-completion.
 "  - Misspelling words correcting (by abbreviations).
 "  - Russian language support.
 "  - Highlighting: TODO, colors.
@@ -44,7 +44,6 @@
 " Проверить функции.
 " Фолдинг секций.
 
-
 "---------------------------------------------------------------------------
 " Section: Common settings. {{{1
 "---------------------------------------------------------------------------
@@ -58,14 +57,11 @@ set secure
 " Find merge conflict markers.
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
-" Особенно актуально для Windows GUI.
+" Especially need for Windows GUI.
 set encoding=utf-8
 scriptencoding utf-8
 
 filetype off
-"let g:pathogen_disabled = ["ctrlp"]
-"call pathogen#helptags()
-"call pathogen#infect()
 
 function! s:is_it_first_run()
     let l:f_name = "~/.vim/first-run"
@@ -111,70 +107,79 @@ endfunction " }}}1
 " - webapi-vim - An Interface to WEB APIs.
 
 call plug#begin("~/.vim/bundle")
-" Plug "https://github.com/sjl/gundo.vim",
-call s:infect_plugins([
-\    "https://github.com/ctrlpvim/ctrlp.vim",
-\    "https://github.com/Raimondi/delimitMate",
-\    "https://github.com/Shougo/denite.nvim",
-\    "https://github.com/vim-scripts/matchit.zip",
-\    "https://github.com/Shougo/neosnippet.vim",
-\    "https://github.com/scrooloose/nerdtree.git",
-\    "https://github.com/tomtom/quickfixsigns_vim",
-\    "https://github.com/luochen1990/rainbow",
-\    "https://github.com/scrooloose/syntastic.git",
-\    "https://github.com/majutsushi/tagbar",
-\    "https://github.com/mbbill/undotree",
-\    "https://github.com/vim-airline/vim-airline-themes",
-\    "https://github.com/vim-airline/vim-airline",
-\    "https://github.com/gorodinskiy/vim-coloresque",
-\    "https://github.com/tpope/vim-fugitive",
-\    "https://github.com/airblade/vim-gitgutter",
-\    "https://github.com/kshenoy/vim-signature",
-\    "https://github.com/mhinz/vim-signify",
-\    "https://github.com/tpope/vim-surround",
-\    "https://github.com/reedes/vim-wordy",
-\    "https://github.com/mattn/webapi-vim",
-\    "https://github.com/vim-scripts/LargeFile"
-\ ])
 
-Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
-Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
+" Plug 'https://github.com/sjl/gundo.vim'
+" Plug 'https://github.com/lpenz/vimcommander.git'
 
-Plug 'https://github.com/WolfgangMehner/c-support', { 'for': 'c'}
-" - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
-" Plug 'https://github.com/mh21/errormarker.vim', {'for': ['c']}
+    call s:infect_plugins([
+    \    "https://github.com/flazz/vim-colorschemes",
+    \    "https://github.com/ctrlpvim/ctrlp.vim",
+    \    "https://github.com/Raimondi/delimitMate",
+    \    "https://github.com/Shougo/denite.nvim",
+    \    "https://github.com/vim-scripts/matchit.zip",
+    \    "https://github.com/Shougo/neosnippet.vim",
+    \    "https://github.com/scrooloose/nerdtree.git",
+    \    "https://github.com/tomtom/quickfixsigns_vim",
+    \    "https://github.com/luochen1990/rainbow",
+    \    "https://github.com/scrooloose/syntastic.git",
+    \    "https://github.com/majutsushi/tagbar",
+    \    "https://github.com/mbbill/undotree",
+    \    "https://github.com/vim-airline/vim-airline-themes",
+    \    "https://github.com/vim-airline/vim-airline",
+    \    "https://github.com/gorodinskiy/vim-coloresque",
+    \    "https://github.com/tpope/vim-fugitive",
+    \    "https://github.com/airblade/vim-gitgutter",
+    \    "https://github.com/kshenoy/vim-signature",
+    \    "https://github.com/mhinz/vim-signify",
+    \    "https://github.com/tpope/vim-surround",
+    \    "https://github.com/reedes/vim-wordy",
+    \    "https://github.com/mattn/webapi-vim",
+    \    "https://github.com/vim-scripts/LargeFile",
+    \    "https://github.com/ryanoasis/vim-devicons",
+    \ ])
 
-" - emmet - web developers abbreviations expander.
-Plug 'https://github.com/mattn/emmet-vim', {'for': ['php', 'html']}
-Plug 'https://github.com/hail2u/vim-css3-syntax.git', {'for': ['css', 'html', 'php']}
-Plug 'https://github.com/pangloss/vim-javascript', {'for': ['javascript', 'html']}
-" - PIV - php support.
-Plug 'https://github.com/spf13/PIV', {'for': 'php'}
+    Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
+    Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
 
-Plug 'https://github.com/WolfgangMehner/latex-support', {'for': 'latex'}
+    Plug 'https://github.com/WolfgangMehner/c-support', { 'for': 'c'}
+    Plug 'https://github.com/ilyachur/cmake4vim', { 'for': ['cmake', 'c', 'cpp'] }
+    " Plug 'https://github.com/puremourning/vimspector', { 'for': ['c', 'cpp', 'lua', 'rust', 'python', 'tcl', 'go', 'php', 'java', 'javascript', 'typescript'] }
+    " - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
+    " Plug 'https://github.com/mh21/errormarker.vim', {'for': ['c']}
 
-Plug 'https://github.com/WolfgangMehner/lua-support', {'for': 'lua'}
+    " - emmet - web developers abbreviations expander.
+    Plug 'https://github.com/mattn/emmet-vim', {'for': ['php', 'html']}
+    Plug 'https://github.com/hail2u/vim-css3-syntax.git', {'for': ['css', 'html', 'php']}
+    Plug 'https://github.com/pangloss/vim-javascript', {'for': ['javascript', 'html']}
+    Plug 'https://github.com/leafgarland/typescript-vim', {'for': ['typescript', 'typescriptreact']}
+    " - PIV - php support.
+    Plug 'https://github.com/spf13/PIV', {'for': 'php'}
 
-Plug 'https://github.com/WolfgangMehner/matlab-support', {'for': 'matlab'}
+    Plug 'https://github.com/lervag/vimtex', {'for': 'tex'}
 
-Plug 'https://github.com/WolfgangMehner/perl-support', {'for': 'perl'}
+    Plug 'https://github.com/WolfgangMehner/lua-support', {'for': 'lua'}
 
-Plug 'https://github.com/python-mode/python-mode', {'for': 'python'}
-" - vim-virtualenv - The virtualenv.vim plugin will modify python's sys.path and the $PATH environment variable so that anything done with :python or :!python will behave like you would expect for the chosen virtualenv.
-Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
+    Plug 'https://github.com/WolfgangMehner/matlab-support', {'for': 'matlab'}
 
-Plug 'https://github.com/vim-scripts/Ada-Bundle', {'for': 'ada'}
-Plug 'https://github.com/thindil/vim-ada', {'for': 'ada'}
+    Plug 'https://github.com/WolfgangMehner/perl-support', {'for': 'perl'}
 
-Plug 'https://github.com/plasticboy/vim-markdown', {'for': 'markdown'}
-    "https://github.com/lpenz/vimcommander.git",
-Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
+    Plug 'https://github.com/python-mode/python-mode', {'for': 'python'}
+    " - vim-virtualenv - The virtualenv.vim plugin will modify python's sys.path and the $PATH environment variable
+    " so that anything done with :python or :!python will behave like you would expect for the chosen virtualenv.
+    Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 
-if s:is_it_first_run()
-    PlugInstall
-endif
+    Plug 'https://github.com/vim-scripts/Ada-Bundle', {'for': 'ada'}
+    Plug 'https://github.com/thindil/vim-ada', {'for': 'ada'}
 
-silent! call s:install()
+    Plug 'https://github.com/plasticboy/vim-markdown', {'for': 'markdown'}
+
+    Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
+
+    Plug 'https://github.com/vim-utils/vim-man', {'for': 'man'}
+
+    if s:is_it_first_run()
+        PlugInstall
+    endif
 
 call plug#end()
 

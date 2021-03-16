@@ -2,7 +2,6 @@
 " Filetype plugin for .vimrc.
 "
 
-
 " Define and reset augroup used in vimrc.
 augroup vimrc
 	au!
