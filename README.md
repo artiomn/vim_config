@@ -35,7 +35,7 @@ Requirements
     sudo apt-get install exuberant-ctags
 
 
-Instalation
+Installation
 -----------
 
 Clone this repository in your home dir:
