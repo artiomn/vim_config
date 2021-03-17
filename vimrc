@@ -163,7 +163,15 @@ call plug#begin("~/.vim/bundle")
     \    "https://github.com/nathanaelkane/vim-indent-guides",
     \    "https://github.com/mox-mox/vim-localsearch",
     \    "https://github.com/junegunn/rainbow_parentheses.vim",
-	\	 "https://github.com/junegunn/indentLine"
+	\	 "https://github.com/junegunn/indentLine",
+	\	 "~/.vim/bundle/baloons",
+	\	 "~/.vim/bundle/contexthelp",
+	\	 "~/.vim/bundle/yakuake",
+	\	 "~/.vim/bundle/datetime",
+	\	 "~/.vim/bundle/lastcursorpos",
+	\	 "~/.vim/bundle/mouse",
+	\	 "~/.vim/bundle/tabs",
+	\	 "~/.vim/bundle/fontsize",
     \ ])
 
     Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
@@ -173,7 +181,8 @@ call plug#begin("~/.vim/bundle")
     Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
     Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
 
-    Plug 'https://github.com/WolfgangMehner/c-support', { 'for': 'c'}
+    Plug 'https://github.com/WolfgangMehner/c-support', { 'for': ['c', 'cpp']}
+	Plug '~/.vim/bundle/alternate', {'for': ['c', 'cpp']}
     Plug 'https://github.com/ilyachur/cmake4vim', { 'for': ['cmake', 'c', 'cpp'] }
     " Plug 'https://github.com/puremourning/vimspector', { 'for': ['c', 'cpp', 'lua', 'rust', 'python', 'tcl', 'go', 'php', 'java', 'javascript', 'typescript'] }
     " - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
