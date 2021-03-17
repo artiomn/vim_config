@@ -48,3 +48,10 @@ Goto cloned directory and init submodules:
 
 Create `~/.vimrc` file with content:
     source ~/.vim/vimrc.vim
+
+
+Troubles
+--------
+
+In the Arch-like systems you must install GVim to support working with a system clipboard.
+

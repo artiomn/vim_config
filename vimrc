@@ -108,17 +108,35 @@ endfunction " }}}1
 
 call plug#begin("~/.vim/bundle")
 
+" TODO:
+" https://github.com/edkolev/tmuxline.vim
+" https://github.com/jreybert/vimagit
+" https://github.com/vim-ctrlspace/vim-ctrlspace
+" https://github.com/mattn/vim-gist
+" https://github.com/godlygeek/tabular
+" https://github.com/mg979/vim-visual-multi
+" https://github.com/tpope/vim-repeat
+" https://github.com/tpope/vim-unimpaired
+" https://github.com/qpkorr/vim-bufkill
+" https://github.com/glts/vim-radical
+" https://github.com/Raimondi/delimitMate
+" https://github.com/justinmk/vim-sneak
+" https://github.com/eugen0329/vim-esearch
+
+" "https://github.com/lambdalisue/battery.vim/"
+" https://github.com/cdelledonne/vim-cmake
 " Plug 'https://github.com/sjl/gundo.vim'
 " Plug 'https://github.com/lpenz/vimcommander.git'
 
     call s:infect_plugins([
     \    "https://github.com/flazz/vim-colorschemes",
+    \    "https://github.com/junegunn/seoul256.vim",
+    \    "https://github.com/junegunn/jellybeans.vim",
     \    "https://github.com/ctrlpvim/ctrlp.vim",
     \    "https://github.com/Raimondi/delimitMate",
     \    "https://github.com/Shougo/denite.nvim",
-    \    "https://github.com/vim-scripts/matchit.zip",
+    \    "https://github.com/chrisbra/matchit",
     \    "https://github.com/Shougo/neosnippet.vim",
-    \    "https://github.com/scrooloose/nerdtree.git",
     \    "https://github.com/tomtom/quickfixsigns_vim",
     \    "https://github.com/luochen1990/rainbow",
     \    "https://github.com/scrooloose/syntastic.git",
@@ -137,8 +155,20 @@ call plug#begin("~/.vim/bundle")
     \    "https://github.com/vim-scripts/LargeFile",
     \    "https://github.com/ryanoasis/vim-devicons",
     \    "https://github.com/jacquesbh/vim-showmarks",
-    \    "https://github.com/vim-scripts/taglist.vim"
+    \    "https://github.com/vim-scripts/taglist.vim",
+    \    "https://github.com/junegunn/gv.vim",
+    \    "https://github.com/tpope/vim-surround",
+    \    "https://github.com/tpope/vim-speeddating",
+    \    "https://github.com/bling/vim-bufferline",
+    \    "https://github.com/nathanaelkane/vim-indent-guides",
+    \    "https://github.com/mox-mox/vim-localsearch",
+    \    "https://github.com/junegunn/rainbow_parentheses.vim",
+	\	 "https://github.com/junegunn/indentLine"
     \ ])
+
+    Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
+
+	Plug 'https://github.com/chrisbra/csv.vim', { 'for': 'csv' }
 
     Plug 'https://github.com/WolfgangMehner/awk-support', { 'for': ['shell', 'awk'] }
     Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
@@ -149,13 +179,17 @@ call plug#begin("~/.vim/bundle")
     " - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
     " Plug 'https://github.com/mh21/errormarker.vim', {'for': ['c']}
 
+    Plug 'https://github.com/junegunn/vim-cfr', {'for': 'java'}
+
     " - emmet - web developers abbreviations expander.
-    Plug 'https://github.com/mattn/emmet-vim', {'for': ['php', 'html']}
+    Plug 'https://github.com/mattn/emmet-vim', {'for': ['php', 'html', 'css']}
     Plug 'https://github.com/hail2u/vim-css3-syntax.git', {'for': ['css', 'html', 'php']}
     Plug 'https://github.com/pangloss/vim-javascript', {'for': ['javascript', 'html']}
     Plug 'https://github.com/leafgarland/typescript-vim', {'for': ['typescript', 'typescriptreact']}
     " - PIV - php support.
     Plug 'https://github.com/spf13/PIV', {'for': 'php'}
+
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 
     Plug 'https://github.com/lervag/vimtex', {'for': 'tex'}
 
@@ -174,8 +208,8 @@ call plug#begin("~/.vim/bundle")
     Plug 'https://github.com/thindil/vim-ada', {'for': 'ada'}
 
     Plug 'https://github.com/plasticboy/vim-markdown', {'for': 'markdown'}
-
-    Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
+    Plug 'https://github.com/junegunn/vim-markdown-toc', {'for': 'markdown'}
+    " Plug 'https://github.com/WolfgangMehner/vim-support', {'for': 'vim'}
 
     Plug 'https://github.com/vim-utils/vim-man', {'for': 'man'}
 
@@ -185,7 +219,9 @@ call plug#begin("~/.vim/bundle")
 
 call plug#end()
 
-" call pathogen#helptags()
+if filereadable("/etc/vim/vimrc")
+	source /etc/vim/vimrc
+endif
 
 "filetype plugin indent on
 
@@ -309,10 +345,6 @@ set tagbsearch
 " Change buffer - without saving
 " (don't unload a buffer when no longer shown in a window)
 set hidden
-
-"if filereadable("/etc/vim/vimrc")
-"	source /etc/vim/vimrc
-"endif
 
 " Extended regexps - use \v for very-magic.
 set magic

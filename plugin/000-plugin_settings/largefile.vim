@@ -1,3 +1,3 @@
 " LargeFile plugin settings.
 
-let g:LargeFile = 200
+let g:LargeFile = 150
