@@ -128,6 +128,8 @@ call plug#begin("~/.vim/bundle")
 " Plug 'https://github.com/sjl/gundo.vim'
 " Plug 'https://github.com/lpenz/vimcommander.git'
 
+" \	 "https://github.com/junegunn/indentLine",
+
     call s:infect_plugins([
     \    "https://github.com/flazz/vim-colorschemes",
     \    "https://github.com/junegunn/seoul256.vim",
@@ -163,15 +165,18 @@ call plug#begin("~/.vim/bundle")
     \    "https://github.com/nathanaelkane/vim-indent-guides",
     \    "https://github.com/mox-mox/vim-localsearch",
     \    "https://github.com/junegunn/rainbow_parentheses.vim",
-	\	 "https://github.com/junegunn/indentLine",
-	\	 "~/.vim/bundle/baloons",
-	\	 "~/.vim/bundle/contexthelp",
-	\	 "~/.vim/bundle/yakuake",
-	\	 "~/.vim/bundle/datetime",
-	\	 "~/.vim/bundle/lastcursorpos",
-	\	 "~/.vim/bundle/mouse",
-	\	 "~/.vim/bundle/tabs",
-	\	 "~/.vim/bundle/fontsize",
+	\	 "~/.vim/bundle/a_baloons",
+	\	 "~/.vim/bundle/a_contexthelp",
+	\	 "~/.vim/bundle/a_yakuake",
+	\	 "~/.vim/bundle/a_datetime",
+	\	 "~/.vim/bundle/a_lastcursorpos",
+	\	 "~/.vim/bundle/a_mouse",
+	\	 "~/.vim/bundle/a_tabs",
+	\	 "~/.vim/bundle/a_fontsize",
+	\	 "~/.vim/bundle/a_colors",
+	\	 "~/.vim/bundle/a_spell",
+	\	 "~/.vim/bundle/a_translation",
+	\	 "~/.vim/bundle/a_hg_menu"
     \ ])
 
     Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }

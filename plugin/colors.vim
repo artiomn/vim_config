@@ -4,7 +4,7 @@
 
 
 let $darkxterm='yes'
-colorscheme molokai
+colorscheme PerfectDark
 
 " railscasts
 " delek
