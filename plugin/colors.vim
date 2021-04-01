@@ -4,7 +4,7 @@
 
 
 let $darkxterm='yes'
-colorscheme PerfectDark
+colorscheme sublimemonokai
 
 " railscasts
 " delek
