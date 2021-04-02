@@ -75,7 +75,7 @@ fun! TabMessage(cmd)
    set nomodified
 endf
 
-"""""""""
+" Key mappings. {{{1
 " C-T: create new tab
 noremap <silent> <C-T> :tabnew<CR>
 " C-Tab: next tab
@@ -94,5 +94,10 @@ noremap <silent> <C-T>f :tabfind<space>
 noremap <silent> <C-T>m :tabs<CR>:tabm<Space>
 " C-T <number>: got to tab specified
 noremap <C-T> :tabnext<space>
+
+map <leader>tl :call MoveTabLeft()<CR>
+map <leader>tr :call MoveTabRight()<CR>
+
+" 1}}}
 
 " End tabs.

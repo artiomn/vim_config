@@ -70,7 +70,8 @@ fun! OnlineDoc()
 endf
 
 
-" Ctrl + F1. Context help.
+" Ctrl + F1. Context help.{{{1
 nmap <silent> <C-F1> :call LocalDoc()<CR>
 vmap <C-F1> <C-O>:call LocalDoc()<CR>
 imap <silent> <C-F1> <C-O>:call LocalDoc()<CR>
+" 1}}}
