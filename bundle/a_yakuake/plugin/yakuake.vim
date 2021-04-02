@@ -2,59 +2,83 @@
 " Yakuake console support.
 "
 
-let g:yakuake_plugin_enabled = get(g:, 'yakuake_plugin_enabled', 0)
+""" Functions.{{{1
+let g:yakuake_plugin_enabled = get(g:, "yakuake_plugin_enabled", 0)
+let s:cmd = "qdbus "
+
+" "dbus-send --print-reply=literal --type=method_call --dest="
 
 if !executable("yakuake") || !executable("qdbus") || !g:yakuake_plugin_enabled
     finish
 endif
 
-function! YakuakeGetActiveTabId()
-    return system("qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeTerminalId")
+function! yakuake#GetActiveTabId()
+    return substitute(system(s:cmd . "org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeTerminalId"), '[\n\r]\+$', '', '')
 endfunction
 
 
-function! YakuakeGetTabTitle(id)
-    return system("qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.tabTitle " . a:id)
+function! yakuake#Update()
+    call system(s:cmd . "org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.update")
+endfunction
+
+function! yakuake#GetTabTitle(id)
+    return substitute(system(s:cmd . "org.kde.yakuake /yakuake/tabs org.kde.yakuake.tabTitle " . a:id),
+                             \ '[\n\r]\+$', '', '')
 endfunction
 
 
-function! YakuakeSetTabTitle(id, title)
-    call system("qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.setTabTitle " . a:id . " " . a:title)
+function! yakuake#GetOldTabTitle()
+    let g:yakuake#old_tab_title = yakuake#GetTabTitle(yakuake#GetActiveTabId())
+    return g:yakuake#old_tab_title
 endfunction
 
 
-function! YakuakeShow()
-    call system("qdbus org.kde.yakuake /yakuake/window org.kde.yakuake.show")
+function! yakuake#RestoreOldTabTitle()
+	call yakuake#SetTabTitle(yakuake#GetActiveTabId(), g:yakuake#old_tab_title)
 endfunction
 
 
-function! YakuakeHide()
-    call system("qdbus org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.hide")
+function! yakuake#SetTabTitle(id, title)
+    call system(s:cmd . "org.kde.yakuake /yakuake/tabs org.kde.yakuake.setTabTitle " . a:id . " \"" . a:title . "\"")
+	call yakuake#Update()
 endfunction
 
 
-function! YakuakeToggle()
-    call system("qdbus org.kde.yakuake /yakuake/window org.kde.yakuake.toggleWindowState")
+function! yakuake#Show()
+    call system(s:cmd . "org.kde.yakuake /yakuake/window org.kde.yakuake.show")
 endfunction
 
 
-function! YakuakeUpdate()
-    call system("qdbus org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.update")
+function! yakuake#Hide()
+    call system(s:cmd . "org.kde.yakuake /yakuake/MainWindow_1 org.qtproject.Qt.QWidget.hide")
 endfunction
 
 
+function! yakuake#Toggle()
+    call system(s:cmd . "org.kde.yakuake /yakuake/window org.kde.yakuake.toggleWindowState")
+endfunction
+
+""" 1}}}
+
+" Autocommands.{{{1
 if has("unix")
 
    if exists(":command")
-      command! -n=0 -bar Yakuake :call YakuakeOpen()
+      command! -n=0 -bar Yakuake :call yakuake#Open()
    endif
+
+   silent call yakuake#GetOldTabTitle()
 
    augroup yakuake
          au!
-         au VimEnter * let g:old_tab_title = YakuakeGetTabTitle(YakuakeGetActiveTabId())
-         au BufEnter,BufRead,BufNewFile *
-           \ call YakuakeSetTabTitle(YakuakeGetActiveTabId(), expand('%:t')) |
-           \ call YakuakeUpdate()
-         au VimLeave * call YakuakeSetTabTitle(YakuakeGetActiveTabId(), g:old_tab_title)
+         au VimEnter * silent call yakuake#SetTabTitle(yakuake#GetActiveTabId(), expand('%:t'))
+         au VimLeave * silent call yakuake#RestoreOldTabTitle()
+
+         au BufEnter,BufReadPost,BufWritePost *
+           \ silent call yakuake#SetTabTitle(yakuake#GetActiveTabId(), expand('%:t'))
+		 au BufNewFile * silent call yakuake#SetTabTitle(yakuake#GetActiveTabId(), "New")
    augroup END
+
 endif
+" 1}}}
+
