@@ -126,6 +126,7 @@ imap <F9> <esc>:make<cr>i
 
 map <silent><F10> :emenu Encoding.<TAB>
 map <silent><F11> :Mouse auto<CR>
+"nmap <silent><F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " 2}}}
 

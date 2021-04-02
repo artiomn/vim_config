@@ -1,12 +1,12 @@
 "
-" Vimrc from Artiom N.
+" Vimrc from Artiom N.(cl)2021
 "
 
 " Description:
 "
 " Vim editor configuration: vimrc file.
 " To use it, copy it to
-"     for Unix and OS/2:      ~/.vimrc
+"     for Unix and OS/2:      ~/.vim/vimrc or ~/.vimrc
 "     for Amiga:              s:.vimrc
 "     for MS-DOS and Win32:   $VIM\_vimrc
 "     for OpenVMS:            sys$login:.vimrc
@@ -37,7 +37,6 @@
 " Описать функции и привязки клавиш.
 " Ненужный try/catch на silent!.
 " Все автокоманды за if has('autocmd')
-" Изучить ftplugin.vim
 " shellescape для всех вызовов.
 " Переделать глобальные переменные на словари.
 " debian.vim
@@ -47,6 +46,10 @@
 "---------------------------------------------------------------------------
 " Section: Common settings. {{{1
 "---------------------------------------------------------------------------
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
 
 " Load only with C++ files!!!
 let loaded_taglist = "no"
@@ -63,7 +66,7 @@ scriptencoding utf-8
 
 filetype off
 
-function! s:is_it_first_run()
+function! s:is_it_first_run() " {{{1
     let l:f_name = "~/.vim/first-run"
     if !empty(expand(glob(l:f_name)))
         call delete(expand(l:f_name))
@@ -71,7 +74,7 @@ function! s:is_it_first_run()
     else
         return 0
     endif
-endfunction
+endfunction " 1}}}
 
 
 function! s:infect_plugins(plugin_list) abort " {{{1
@@ -129,54 +132,55 @@ call plug#begin("~/.vim/bundle")
 " Plug 'https://github.com/lpenz/vimcommander.git'
 
 " \	 "https://github.com/junegunn/indentLine",
+" Veery slow: \    "https://github.com/gorodinskiy/vim-coloresque",
 
     call s:infect_plugins([
     \    "https://github.com/flazz/vim-colorschemes",
     \    "https://github.com/junegunn/seoul256.vim",
-    \    "https://github.com/junegunn/jellybeans.vim",
-    \    "https://github.com/ctrlpvim/ctrlp.vim",
-    \    "https://github.com/Raimondi/delimitMate",
-    \    "https://github.com/Shougo/denite.nvim",
-    \    "https://github.com/chrisbra/matchit",
-    \    "https://github.com/Shougo/neosnippet.vim",
-    \    "https://github.com/tomtom/quickfixsigns_vim",
     \    "https://github.com/luochen1990/rainbow",
-    \    "https://github.com/scrooloose/syntastic.git",
-    \    "https://github.com/majutsushi/tagbar",
-    \    "https://github.com/mbbill/undotree",
-    \    "https://github.com/vim-airline/vim-airline-themes",
-    \    "https://github.com/vim-airline/vim-airline",
-    \    "https://github.com/gorodinskiy/vim-coloresque",
-    \    "https://github.com/tpope/vim-fugitive",
+	\
     \    "https://github.com/airblade/vim-gitgutter",
-    \    "https://github.com/kshenoy/vim-signature",
-    \    "https://github.com/mhinz/vim-signify",
-    \    "https://github.com/tpope/vim-surround",
-    \    "https://github.com/reedes/vim-wordy",
-    \    "https://github.com/mattn/webapi-vim",
-    \    "https://github.com/vim-scripts/LargeFile",
-    \    "https://github.com/ryanoasis/vim-devicons",
-    \    "https://github.com/jacquesbh/vim-showmarks",
-    \    "https://github.com/vim-scripts/taglist.vim",
-    \    "https://github.com/junegunn/gv.vim",
-    \    "https://github.com/tpope/vim-surround",
-    \    "https://github.com/tpope/vim-speeddating",
     \    "https://github.com/bling/vim-bufferline",
-    \    "https://github.com/nathanaelkane/vim-indent-guides",
+    \    "https://github.com/chrisbra/matchit",
+    \    "https://github.com/ctrlpvim/ctrlp.vim",
+    \    "https://github.com/jacquesbh/vim-showmarks",
+    \    "https://github.com/junegunn/gv.vim",
+	\    "https://github.com/junegunn/vim-slash",
+    \    "https://github.com/kshenoy/vim-signature",
+    \    "https://github.com/majutsushi/tagbar",
+    \    "https://github.com/mattn/webapi-vim",
+    \    "https://github.com/mbbill/undotree",
+    \    "https://github.com/mhinz/vim-signify",
     \    "https://github.com/mox-mox/vim-localsearch",
-    \    "https://github.com/junegunn/rainbow_parentheses.vim",
+    \    "https://github.com/nathanaelkane/vim-indent-guides",
+    \    "https://github.com/reedes/vim-wordy",
+    \    "https://github.com/ryanoasis/vim-devicons",
+    \    "https://github.com/scrooloose/syntastic.git",
+    \    "https://github.com/sheerun/vim-polyglot",
+    \    "https://github.com/Shougo/denite.nvim",
+    \    "https://github.com/Shougo/neosnippet.vim",
+    \    "https://github.com/Shougo/neosnippet-snippets",
+    \    "https://github.com/tomtom/quickfixsigns_vim",
+    \    "https://github.com/tpope/vim-fugitive",
+    \    "https://github.com/tpope/vim-speeddating",
+    \    "https://github.com/tpope/vim-surround",
+    \    "https://github.com/vim-airline/vim-airline",
+    \    "https://github.com/vim-airline/vim-airline-themes",
+    \    "https://github.com/vim-scripts/LargeFile",
+    \    "https://github.com/vim-scripts/taglist.vim",
+	\
 	\	 "~/.vim/bundle/a_baloons",
+	\	 "~/.vim/bundle/a_colors",
 	\	 "~/.vim/bundle/a_contexthelp",
-	\	 "~/.vim/bundle/a_yakuake",
 	\	 "~/.vim/bundle/a_datetime",
+	\	 "~/.vim/bundle/a_fontsize",
+	\	 "~/.vim/bundle/a_hg_menu",
 	\	 "~/.vim/bundle/a_lastcursorpos",
 	\	 "~/.vim/bundle/a_mouse",
-	\	 "~/.vim/bundle/a_tabs",
-	\	 "~/.vim/bundle/a_fontsize",
-	\	 "~/.vim/bundle/a_colors",
 	\	 "~/.vim/bundle/a_spell",
+	\	 "~/.vim/bundle/a_tabs",
 	\	 "~/.vim/bundle/a_translation",
-	\	 "~/.vim/bundle/a_hg_menu"
+	\	 "~/.vim/bundle/a_yakuake",
     \ ])
 
     Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
@@ -263,7 +267,7 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 
 "
-" Common text settings.
+" Common text settings.{{{1
 "
 
 set tabstop=4
@@ -310,9 +314,12 @@ set switchbuf=useopen
 " Always show tabline
 "set stal=2
 
+" Support these file formats.
+set fileformats=unix,dos,mac
 
 " Encodings list for the auto-detection.
 set fileencodings=ucs-bom,utf-8,cp1251,cp866,koi8-r,java,ucs-2le
+" 1}}}
 
 
 "
@@ -339,7 +346,7 @@ set autoread
 
 
 "
-" Tags.
+" Tags.{{{1
 "
 
 " list of file names to search for tags: Upward tag search
@@ -354,6 +361,7 @@ set tagbsearch
 "set tagrelative
 " a :tag command will use the tagstack
 "set tagstack
+" 1}}}
 
 
 " Change buffer - without saving
@@ -362,10 +370,6 @@ set hidden
 
 " Extended regexps - use \v for very-magic.
 set magic
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " Prevent modelines in files from being evaluated (avoids a potential
 " security problem wherein a malicious user could write a hazardous
@@ -383,18 +387,13 @@ set printoptions=paper:letter,number:y,syntax:n
 " Keep 250 lines of command line history.
 set history=250
 
-
-" Support these file formats.
-set fileformats=unix,dos,mac
-
-
 " Enable file type plugins and indentation rules.
 filetype on
 filetype plugin on
 filetype plugin indent on
 
 "
-" Folding.
+" Folding.{{{1
 "
 
 " Set to display all folds open.
@@ -421,17 +420,19 @@ set foldminlines=1
 "	set foldcolumn=3	" width of the column used to indicate folds
 "endif
 
+" 1}}}
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.a,.exe,.info,.aux,.log,.out,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.obj,.COPYING
+set suffixes=.bak,~,.swp,.o,.a,.exe,.info,.aux,.log,.out,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.obj,.COPYING,.pyc
 
 
 " }}}1
 
-"---------------------------------------------------------------------------
+
+"
 " Section:  Commands. {{{1
-"---------------------------------------------------------------------------
+"
 
 if exists(":command")
    command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
@@ -447,7 +448,7 @@ if exists(":command")
       \ | wincmd p
 
    " Info:
-   " Define Info cmd to source script file which redefine this one. 
+   " Define Info cmd to source script file which redefine this one.
    "command! -nargs=* Info
    " \ delcommand Info |
    " \ runt scripts/Info.vim |
@@ -468,28 +469,25 @@ endif " exists(":command")
 
 " 1}}}
 
-"----------------------------------------------------------------------------
+
+"
 " Section: Plugin settings. {{{1
-"----------------------------------------------------------------------------
+"
 
 " Menus
-" source $VIMRUNTIME/menu.vim
-" set wildmenu cpo-=< wcm=<C-Z>
+if filereadable("$VIMRUNTIME/menu.vim")
+    source $VIMRUNTIME/menu.vim
+    set wildmenu cpo-=< wcm=<C-Z>
+endif
 
 " 1}}}
-
-
-map <Leader>tl :call MoveTabLeft()<CR>
-map <Leader>tr :call MoveTabRight()<CR>
 
 "Set mapleader to '\'
 "let mapleader = "\\"
 "let g:mapleader = "\\"
 
-
-"nmap <silent><F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
 syntax on
 
-let g:did_ftplugin=1
+let g:yakuake_plugin_enabled = 1
+let g:did_ftplugin = 1
 
