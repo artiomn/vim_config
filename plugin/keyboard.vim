@@ -5,7 +5,7 @@
 " Artiom N.
 
 "
-" Keyboard.
+" Keyboard settings{{{1
 "
 
 " Allow backspacing over everything in insert mode.
@@ -30,178 +30,73 @@ set iminsert=0
 " Allow for cursor beyond last character.
 set virtualedit=onemore
 
+"1}}}
+
 "
-" Section: Mappings. {{{1
+" Mappings. {{{1
 "
 
+function! Mosh_Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<Tab>"
+endfunction
 
 " Functional keys mapping{{{2
 
-" F2 - wrapping toggle.
-nmap <F2> :set wrap!<CR>
-vmap <F2> <C-O>:set wrap!<CR>
-imap <F2> <C-O>:set wrap!<CR>
+" F1 - help.{{{3
+map! <F1> <C-C><F1>
+"3}}}
 
-" F3 - toggle line numbers.
-nmap <silent> <F3> :set number!<CR>
-vmap <silent> <F3> <C-O>:set number!<CR>
-imap <silent> <F3> <C-O>:set number!<CR>
+" F2 - wrapping toggle.{{{3
+nmap <silent><F2> :setlocal wrap!<CR>
+vmap <silent><F2> <C-O>:setlocal wrap!<CR>
+imap <silent><F2> <C-O>:setlocal wrap!<CR>
+" 3}}}
 
-" F4 - wrapping toggle.
-nmap <silent><F4> <ESC>:set wrap!<CR>
-vmap <silent><F4> <ESC>:set wrap!<CR>
-imap <silent><F4> <ESC>:set wrap!<CR>
+" F3 - mode switcher.{{{3
 
-" F5 - call translator.
-nmap <F5> :Translate expand("<cword>")<CR>
-vmap <F5> <ESC>:Translate expand("<cword>")<CR>
-imap <F5> <ESC>:Translate expand("<cword>")<CR>
+" Toggle line numbers.
+nmap <silent> <F3> :setlocal number!<CR>
+vmap <silent> <F3> <C-O>:setlocal number!<CR>
+imap <silent> <F3> <C-O>:setlocal number!<CR>
 
-" VimTip44: The last command-line change (those invoked with ":",
+" Highlight search.
+nmap <silent><S-F3> :setlocal hlsearch! hlsearch?<CR>
+vmap <silent><S-F3> <C-O>:setlocal hlsearch! hlsearch?<CR>
+imap <silent><S-F3> <C-O>:setlocal hlsearch! hlsearch?<CR>
+
+" List special characters.
+nmap <silent><M-F3> :setlocal list! list?<CR>
+vmap <silent><M-F3> <C-O>:setlocal list! list?<CR>
+imap <silent><M-F3> <C-O>:setlocal list! list?<CR>
+"3}}}
+
+" F4 - marks.{{{3
+map <silent><F4> :marks<cr>
+vmap <silent><F4> <esc>:marks<cr>
+imap <silent><F4> <esc>:marks<cr>
+" 3}}}
+
+" F5 - call translator.{{{3
+nmap <silent><F5> :Translate expand("<cword>")<CR>
+vmap <silent><F5> <ESC>:Translate expand("<cword>")<CR>
+imap <silent><F5> <ESC>:Translate expand("<cword>")<CR>
+"3}}}
+
+" F6 - VimTip44: The last command-line change (those invoked with ":",
 " e.g. :s/foo/bar ) can be repeated with the "@:" command.
-"map	<F5>	@:
+map <silent><F6> @:
 
-" F6 - prev buffer
-nmap <F6> :bp<cr>
-vmap <F6> <esc>:bp<cr>i
-imap <F6> <esc>:bp<cr>i
-
-" F7 - next buffer
-map <F7> :bn<cr>
-vmap <F7> <esc>:bn<cr>i
-imap <F7> <esc>:bn<cr>i
-map <F7> :Recode<CR>
-
-"map <F8> :read !date<CR>
-"map! <F8> <ESC>:read !date<CR>
-
-" F8 - Marks
-"map <F8> :marks<cr>
-"vmap <F8> <esc>:marks<cr>
-"imap <F8> <esc>:marks<cr>
-
-" F9 to make.
-map <F9> :make<cr>
-vmap <F9> <esc>:make<cr>i
-imap <F9> <esc>:make<cr>i
+" VimTip637: execute accidently inserted commands
+" If you are in insert mode and typed an command for normal mode, you can
+" use it.  This mapping switches to normal mode, undo'es the last insertion
+" and takes it as a command.
+inoremap <C-ESC> <ESC>u@.
 
 
-map <F10> :emenu Encoding.<TAB>
-map <F12> :Mouse auto<CR>
-" }}}
-
-" CursorKeys: use screen lines.
-" editing mapping (make cursor keys work like in windows).
-" ie: <C-Left><C-Right> move to next word.
-nmap	<C-Left>	b
-vmap	<C-S-Left>	b
-nmap	<C-S-Left>	vb
-imap	<C-S-Left>	<C-O>vb
-
-" Control+Space words autocompletion.
-imap <C-Space> <C-N>
-
-" Make <Backspace> act as <Delete> in visual and normal modes.
-vmap <BS> x
-"nmap <BS> d1h
-
-
-" Alt+Bcksp for the word deletion.
-cmap <a-bs> <c-w>
-imap <a-bs> <c-w>
-
-" Ctrl + F3 - list all errors.
-nmap <C-F3> :cclose<cr>
-vmap <C-F3> <esc>:cclose<cr>
-imap <C-F3> <esc>:cclose<cr>
-
-
-" have Y behave analogously to D rather than to dd 
-nmap Y y$
-
-" With no selection - copy current line
-nmap	<C-Insert>	"+yy
-imap	<C-Insert>	<C-O>"+yy
-cmap	<C-Insert>	<C-Y>
-
-":inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
-
-" SwitchCase:
-"imap	<silent><Plug>SwitchCase <C-R>=(@@==#toupper(@@))?tolower(@@):(@@==#tolower(@@))?substitute(@@,'\<.','\u&',''):toupper(@@)<CR><C-O>`]
-"nmap	<M-\>	ciw<Plug>SwitchCase
-"vmap	<M-\>	c<C-\><C-N>i<Plug>SwitchCase<ESC>gv
-"imap	<M-\>	<ESC>ciW<Plug>SwitchCase
-
-" Digraphs:
-dig ** 8226	" &bull;
-dig .. 8230	" &hellip
-"dig <space><space>	160	" &nbsp;
-
-
-
-"imap	<silent><C-Z><C-F>	<C-R>='@(#) '.expand('%:p:~')<CR>
-"imap	<silent><C-Z><C-V>	<C-R>='vim: set ft='.&ft.' ts='. &ts . ' noet fenc=' . &fenc . ':'<CR>
-"imap	<silent><C-Z><C-R>	<C-R>='(c) '.copyright<CR>
-
-
-imap	<C-R><C-D>		<C-R>=expand("%:p:h")<CR>/
-imap	<C-R><C-E>		<C-R>=expand("%:p:~:.:h")<CR>/
-
-nmap	<Leader>gf	:try<bar>find <lt>cfile><bar>catch<bar>edit <lt>cfile><bar>endtry<cr>
-
-
-nmap \fixes :grep -r "FIXME" * <CR>:copen<CR>
-nmap \todo  :grep -r "TODO"  * <CR>:copen<CR>
-
-
-"Indent all lines
-map <leader>ia mzggVG='z
-
-
-" CTRL-C and CTRL-Insert are Copy
-vmap <C-C> "+yi
-vmap <C-Insert> "+yi
-imap <C-V> <esc>"+gPi
-
-
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-
-" Search & replace the word under the cursor
-nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
-
-
-"       make the word before the cursor uppercase. Handy to type words in
-"       lowercase and then make them uppercase.
-"imap <C-F> <Esc>gUiw`]a
-
-"
-" ,Sl = "squeeze lines" - turns a block of empty lines into *one* empty line
-"nmap ,Sl :g/^[<C-I> ]*$/,/[^<C-I> ]/-j<C-M>
-
-
-"   turn executable bit on and off
-nmap ,X :silent execute "!chmod a+x %"<CR>
-nmap ,x :silent execute "!chmod a-x %"<CR>
-
-
-" Select Current Word:
-"nmap	<C-C>		ciw
-"nmap	<C-Space>	ciw
-"nmap	<S-Space>	ciW
-"omap	<C-Space>	iw
-"omap	<S-Space>	iW
-"vmap	<C-Space>	iw
-"vmap	<S-Space>	iW
-
-
-" In insert and command mode:
-map!	<F1>	<C-C><F1>
-noremap		<C-BS>	db
-cnoremap	<C-BS>	<C-W>
-nmap	<M-Del>	diw
-
-" Searching: <F7>
+" F7 - searching.{{{3
 " nnoremap	<F7>	/<C-R><C-W>
 " cnoremap	<F7>	%s!!!g<Left><Left><Left>
 
@@ -215,64 +110,32 @@ nmap	<M-Del>	diw
 " Search current word in the other window
 " noremap		<S-F7>	yiw<C-W>pgg:call search(@@)<CR>
 
-" Switch buffers
-nmap	<Leader><Tab>	:buffer<SPACE><TAB>
+" Search & replace the word under the cursor
+nmap <C-S-F7> :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
-" QuickFix: Development/Compile <F9>
-" nmap	<silent><C-F9>	:wall<BAR>cclose<BAR>silent make<BAR>botright cwindow 4<CR>
-" nmap	<silent><F9>	:botright cwindow 4<BAR>cnext<CR>zv
-" nmap	<silent><S-F9>	:botright cwindow 4<BAR>cprev<CR>zv
+" 3}}}
 
-" Mode Switch:
-" nmap	<silent><F3>	:setlocal wrap! wrap?<CR>
-" nmap	<silent><M-F3>	:setlocal list! list?<CR>
-" nmap	<silent><C-F3>	:setlocal number! number?<CR>
-" nmap	<silent><S-F3>	:setlocal hlsearch! hlsearch?<CR>
-" nmap	<silent><C-S-F3> :setlocal cursorline! cursorcolumn! cursorcolumn?<CR>
+" F8 - date and time.{{{3
+"3}}}
 
-" Tip1330: Easily open and close folds
-"map	<expr><Space>	foldclosed('.')==-1?'l':'za'
-"nmap	<Space> za
-nmap	<CR>	zozt
-"nmap	<Esc>	zczz
+" F9 - make.{{{3
+map <F9> :make<cr>
+vmap <F9> <esc>:make<cr>i
+imap <F9> <esc>:make<cr>i
+" 3}}}
 
-" Goto next/prev folder
-nmap	<M-PageDown>	zjzvzt
-nmap	<M-PageUp>	zkzv[zzt
+map <silent><F10> :emenu Encoding.<TAB>
+map <silent><F11> :Mouse auto<CR>
 
-" Fold an entire block of code
-map	<kPoint>	v%zf
-
-" View cursor line only
-nmap	zV		zMzx
+" 2}}}
 
 
-""" Add selection to clipboard
-vnoremap <silent><M-Insert>	:<C-U>let @c=@*<CR><C-\><C-N>gv"Cy:let @*=@c<CR>
-
-""" Copy to clipboard:
-cmap	<C-Insert>	<C-R>=setreg('*',getcmdline())?'':''<CR>
-" Delete to the clipboard
-map	<S-Del>	<ESC>"*yyddi
-nmap	<S-Del>	"*dd
-
-
-
-" Copy whole buffer to clipboard
-nmap	<C-Insert>	:%yank *<CR>
-
-" Copy current word to the clipboard
-nnoremap	<M-S-Insert>	"*yiw
-
-" Change current word with clipboard
-" nnoremap	<M-C-Insert>	ciw<C-R>*<ESC>
-
-" copy full-file-name to clipboard
-nmap	<C-S-Insert>	:let @*=expand("%:p")<CR>
-
-" Meta-A (Alt+A) is Select all.
-nnoremap	<M-a>	ggVG
-
+" CursorKeys: use screen lines editing mapping (make cursor keys work like in windows).{{{2
+" ie: <C-Left><C-Right> move to next word.
+nmap	<C-Left>	b
+vmap	<C-S-Left>	b
+nmap	<C-S-Left>	vb
+imap	<C-S-Left>	<C-O>vb
 
 if &sel == 'exclusive'
    nmap	<C-Right>	w
@@ -285,6 +148,143 @@ else
    nmap	<C-S-Right>	ve
    imap	<C-S-Right>	<C-O>ve
 endif
+"2}}}
+
+" Copy and paste.{{{2
+" have Y behave analogously to D rather than to dd
+nmap Y y$
+
+" With no selection - copy current line
+nmap <C-Insert> "+yy
+vmap <C-Insert> "+yi
+imap <C-Insert> <C-O>"+yy
+cmap <C-Insert> <C-Y>
+
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+
+" CTRL-C and CTRL-Insert are Copy
+vmap <C-C> "+yi
+imap <C-V> <C-O>"+gPi
+
+""" Add selection to clipboard
+vnoremap <silent><M-Insert>	:<C-U>let @c=@*<CR><C-\><C-N>gv"Cy:let @*=@c<CR>
+
+""" Copy to clipboard:
+cmap	<C-Insert>	<C-R>=setreg('*',getcmdline())?'':''<CR>
+" Delete to the clipboard
+map	<S-Del>	<ESC>"*yyddi
+nmap	<S-Del>	"*dd
+
+
+" Copy whole buffer to clipboard
+nmap	<C-C>	:%yank *<CR>
+
+" Copy current word to the clipboard
+nnoremap	<M-S-Insert>	"*yiw
+
+" Change current word with clipboard
+" nnoremap	<M-C-Insert>	ciw<C-R>*<ESC>
+
+" copy full-file-name to clipboard
+nmap	<C-S-Insert>	:let @*=expand("%:p")<CR>
+
+" Quick paste
+""" Add selection to clipboard
+vnoremap <silent><M-Insert>	:<C-U>let @c=@*<CR><C-\><C-N>gv"Cy:let @*=@c<CR>
+
+"2}}}
+
+" Section: Folding.{{{2
+
+" Folding: view cursor line only
+nmap zV zMzx
+
+" Folding: Indent all lines{{{}}}
+map <leader>ia mzggVG='z
+
+" Tip1330: Easily open and close folds
+"map	<expr><Space>	foldclosed('.')==-1?'l':'za'
+"nmap	<Space> za
+nmap	<CR>	zozt
+"nmap	<Esc>	zczz
+
+" Goto next/prev folder
+nmap	<M-PageDown>	zjzvzt
+nmap	<M-PageUp>	zkzv[zzt
+
+" Folding: fold an entire block of code
+map	<kPoint>	v%zf
+
+"2}}}
+
+" Control+Space words autocompletion.
+imap <C-Space> <C-N>
+
+" Make <Backspace> act as <Delete> in visual and normal modes.
+vmap <silent><BS> x
+nmap <silent><BS> d1h
+
+" TODO:
+" Alt+Bcksp for the word deletion.
+" Doesn't work...
+" cmap <a-bs> <c-w>
+" imap <a-bs> <c-w>
+" In insert and command mode:
+"noremap		<C-BS>	db
+"cnoremap	<C-BS>	<C-W>
+"nmap	<M-Del>	diw
+
+inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
+
+" SwitchCase:
+"imap	<silent><Plug>SwitchCase <C-R>=(@@==#toupper(@@))?tolower(@@):(@@==#tolower(@@))?substitute(@@,'\<.','\u&',''):toupper(@@)<CR><C-O>`]
+"nmap	<M-\>	ciw<Plug>SwitchCase
+"vmap	<M-\>	c<C-\><C-N>i<Plug>SwitchCase<ESC>gv
+"imap	<M-\>	<ESC>ciW<Plug>SwitchCase
+
+" Digraphs:
+dig ** 8226	" &bull;
+dig .. 8230	" &hellip
+"dig <space><space>	160	" &nbsp;
+
+"imap	<silent><C-Z><C-F>	<C-R>='@(#) '.expand('%:p:~')<CR>
+"imap	<silent><C-Z><C-V>	<C-R>='vim: set ft='.&ft.' ts='. &ts . ' noet fenc=' . &fenc . ':'<CR>
+"imap	<silent><C-Z><C-R>	<C-R>='(c) '.copyright<CR>
+
+imap	<C-R><C-D>		<C-R>=expand("%:p:h")<CR>/
+
+nmap	<leader>gf	:try<bar>find <lt>cfile><bar>catch<bar>edit <lt>cfile><bar>endtry<cr>
+
+
+nmap <leader>fixes :grep -r "FIXME" * <CR>:copen<CR>
+nmap <leader>todo  :grep -r "TODO"  * <CR>:copen<CR>
+
+"       make the word before the cursor uppercase. Handy to type words in
+"       lowercase and then make them uppercase.
+"imap <C-F> <Esc>gUiw`]a
+
+"
+" ,Sl = "squeeze lines" - turns a block of empty lines into *one* empty line
+nmap ,Sl :g/^[<C-I> ]*$/,/[^<C-I> ]/-j<C-M>
+
+
+"   turn executable bit on and off
+nmap ,X :silent execute "!chmod a+x %"<CR>
+nmap ,x :silent execute "!chmod a-x %"<CR>
+
+
+" Switch buffers
+nmap <leader><Tab> :buffer<SPACE><TAB>
+
+" QuickFix: Development/Compile <F9>
+" nmap	<silent><C-F9>	:wall<BAR>cclose<BAR>silent make<BAR>botright cwindow 4<CR>
+" nmap	<silent><F9>	:botright cwindow 4<BAR>cnext<CR>zv
+" nmap	<silent><S-F9>	:botright cwindow 4<BAR>cprev<CR>zv
+
+" Meta-A (Alt+A) is Select all.
+nnoremap	<M-a>	ggVG
+
 
 " In visual mode, <TAB> will shift the block and restore selection
 " <S-TAB> will do the same thing, going backward.
@@ -300,15 +300,5 @@ inoremap <S-Tab>	<C-D>
 " Smart Tab: completion
 " inoremap	<expr><Tab>	getline('.')[col('.')-2]!~'\k'? "\<Tab>":"\<C-n>"
 
-" Quick paste
-inoremap	<M-p>	<C-R>"
+" 1}}}
 
-" Correct syntax synchronization.
-"map	<leader><leader>r	:syntax sync fromstart<cr>
-
-
-" VimTip637: execute accidently inserted commands
-" If you are in insert mode and typed an command for normal mode, you can
-" use it.  This mapping switches to normal mode, undo'es the last insertion
-" and takes it as a command.
-inoremap	<C-ESC>	<ESC>u@.
