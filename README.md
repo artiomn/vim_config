@@ -3,6 +3,8 @@ Vim configuration
 
 This is my cross-platform Vim configuration.
 
+![](vim.png)
+
 
 Features
 --------
