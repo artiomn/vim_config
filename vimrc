@@ -191,7 +191,7 @@ call plug#begin("~/.vim/bundle")
     Plug 'https://github.com/WolfgangMehner/bash-support', { 'for': 'shell' }
 
     Plug 'https://github.com/WolfgangMehner/c-support', { 'for': ['c', 'cpp']}
-	Plug '~/.vim/bundle/alternate', {'for': ['c', 'cpp']}
+	Plug '~/.vim/bundle/a_alternate', {'for': ['c', 'cpp']}
     Plug 'https://github.com/ilyachur/cmake4vim', { 'for': ['cmake', 'c', 'cpp'] }
     " Plug 'https://github.com/puremourning/vimspector', { 'for': ['c', 'cpp', 'lua', 'rust', 'python', 'tcl', 'go', 'php', 'java', 'javascript', 'typescript'] }
     " - errormarker - Highlights and sets error markers for lines with compile errors. C-support can do this too.
