@@ -40,16 +40,13 @@ Requirements
 Installation
 -----------
 
-Clone this repository in your home dir:
+- Move your `~/.vim` directory.
+- Clone this repository into the some dir and run `install.sh`:
 
-    git clone https://github.com/artiomn/vim_config.git ~/.vim
-
-Goto cloned directory and init submodules:
-
-    cd ~/.vim && git submodule init && git submodule update
-
-Create `~/.vimrc` file with content:
-    source ~/.vim/vimrc.vim
+```
+git clone https://github.com/artiomn/vim_config.git
+vim_config/install.sh
+```
 
 
 Troubles
